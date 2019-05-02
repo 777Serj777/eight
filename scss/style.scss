@@ -1,0 +1,219 @@
+.box{
+		top: 50px;
+		position: relative;
+		width: 250px;
+		height: 250px;
+		margin: 0 auto;
+	}
+	.ball{		
+		display: flex;
+		align-items: center;
+		position: relative;
+		perspective: 600px;
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		background: radial-gradient(circle farthest-corner at 90% 25% ,#dbdbdb,#292828, rgb(17, 17, 17),#000);	
+		box-shadow: inset -2px 2px 4px rgba($color: #e7e2e2, $alpha: 1),
+					inset -6px 6px 8px rgba($color: #969191, $alpha: .7),
+					inset -8px 8px 10px rgba($color: #666565, $alpha: .6),	
+					inset 12px -14px 20px rgba($color: #000000, $alpha: .6);	
+	}
+	.eight-box{
+		border-radius: 50%;
+		overflow: hidden;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+	.eight{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 110px;
+		height: 130px;
+		position: absolute;
+		top:-70px;
+		left: 28.5%;
+		background-color: #f1f1f1;
+		border-radius: 50%;		
+		font-size: 7.5rem;	
+		transform: rotateX(50deg) rotate(90deg);
+	}
+	.ball__glass{
+		cursor: pointer;
+		margin: 0 auto;
+		width: 130px;
+		height: 130px;
+		perspective: 600px;
+		border-radius: 50%;
+		background-color: rgba($color: #000000, $alpha: .4);
+		transform-style: preserve-3d;
+		transform: translateZ(10px);
+		border:  2px solid #111111;
+		box-shadow: inset 0 0 6px rgba($color: #f1f1f1, $alpha: .4),
+					2.5px -2px 2px rgba($color: #3b3b3b, $alpha: .6),
+					-2.5px 2px 2px rgba($color: #b6b5b5, $alpha: .2);		
+	}
+	.ball-one{
+		position: relative;
+		width: 100%;
+		height: 100%;
+		margin: 0 auto;	
+		perspective: 600px;
+		border-radius: 50%;
+		background-color: rgba($color: #292929, $alpha: .5);
+		box-shadow: inset -4px 2px 4px rgba($color: #000000, $alpha: .8);
+		transform-style: preserve-3d;
+		transform: translateZ(-5px);
+	}
+	%layers{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		margin: 0 auto;	
+		perspective: 600px;
+		border-radius: 50%;
+	}
+	.layers-1{
+		@extend%layers;
+		background-color: rgba($color: #353535, $alpha: .6);
+		transform: translateZ(-15px) scale(1);
+	}
+	.layers-2{
+		@extend%layers;
+		background-color: rgba($color: #000000, $alpha: .4);
+		transform: translateZ(-70px)scale(1);	
+	}
+	.layers-3{
+		@extend%layers;
+		transform: translateZ(-80px)scale(1);
+		background-color: rgba($color: #000000, $alpha: .4);
+	}
+	.layers-4{
+		@extend%layers;
+		transform: translateZ(-90px)scale(1);
+		background-color: rgba($color: #000000, $alpha: .5);
+	}
+	.layers-5{
+		@extend%layers;
+		transform: translateZ(-100px)scale(1);
+		background-color: rgba($color: #000000, $alpha: .8);
+	}
+	.layers-6{
+		@extend%layers;
+		transform: translateZ(-110px)scale(1);
+		background-color: rgba($color: #000000, $alpha: .9);
+	}
+	.positionZ{	
+		width: 100%;
+		height: 100%;
+		position: relative;	
+		transform-style: preserve-3d;	
+		transition: transform 1s;
+		transform: translateZ(-150px) scale(1);	
+	}
+	.triangle{
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+		position: relative;
+		transform-style: preserve-3d;
+		transition: transform 1s;
+		transform-origin: 50% 50%;
+		transform: translateZ(-23.136px);		
+	}	
+	.triangle.show-face{
+		transform: translateZ(-23.136px) rotateY(0deg);
+	}
+	.triangle.show-left {
+		transform: translateZ(-23.136px) rotateY(120deg);
+	 }
+	 .triangle.show-right {
+		transform: translateZ(-23.136px) rotateY(-120deg);
+	 }
+	 .triangle.show-bottom{
+		transform: translateZ(-23.136px) rotateY(180deg) rotateX(-90deg);
+	 }
+	 .positionZ.show{
+		transform: translateZ(-40px) scale(1.1);
+	 }
+
+.triangle-face{
+	top:-25px;
+	opacity: 1;
+	position: absolute;
+	border: 40px solid transparent;
+	border-bottom: 70px solid rgb(93, 27, 180);
+	transform-origin: bottom ;
+	transform: translateZ(23.136px) rotateX(19.3deg);
+	&::before{
+		position: absolute;
+		display: block;
+		content: "Yes";
+		top: 35px;
+		left: -12px;
+		color: #fff;
+	}
+}
+.triangle-right{
+	top:-25px;
+	opacity: 1;	
+	position: absolute;
+	border: 40px solid transparent;
+	border-bottom: 70px solid rgb(93, 27, 180);
+	transform-origin: bottom right;
+	transform: translateZ(23.136px)   rotateY(-60deg) rotateX(-19.3deg);
+	&::before{
+		text-align: center;
+		transform: rotateY(180deg);
+		position: absolute;
+		display: block;
+		content: "Without a doubt";
+		font-size: .75rem;
+		top: 32px;
+		left: -20px;
+		color: #fff;
+	}		
+	}
+.triangle-left{
+	top:-25px;
+	opacity: 1;		
+	position: absolute;
+	border: 40px solid transparent;
+	border-bottom: 70px solid rgb(93, 27, 180);
+	transform-origin: bottom left;
+	transform: translateZ(23.136px) rotateY(60deg) rotateX(-19.3deg);
+	&::before{
+		text-align: center;
+		transform: rotateY(180deg);
+		position: absolute;
+		display: block;
+		content: "Very doubtful";
+		font-size: .8rem;
+		top: 28px;
+		left: -22px;
+		color: #fff;
+	}
+}
+.triangle-bottom{
+	top:-25px;
+	opacity: 1;		
+	position: absolute;
+	border: 40px solid transparent;
+	border-bottom: 70px solid rgb(93, 27, 180);
+	transform-origin: bottom;
+	transform: translateZ(23.136px) rotateX(90deg);
+	
+	&::before{
+		transform: rotateY(180deg);
+		position: absolute;
+		display: block;
+		content: "Hello!";
+	
+		top: 35px;
+		left: -20px;
+		color: #fff;
+	}
+}
